@@ -13,7 +13,8 @@ export const Header = ({
     onOpenAuthModal,
     onOpenCommandPalette
 }) => {
-    const brandName = activeBrand?.brandName || 'NACIRA STUDIO';
+    const brandName = activeBrand?.brandName || 'Dekor Interior';
+    const salesName = activeBrand?.salesName || 'Hasni';
     const shortDesc = activeBrand?.shortDescription || 'Architectural Interior Design & Build — Master Price List 2026';
     const isSuperAdmin = currentUser?.role === 'SUPER_ADMIN';
 
@@ -43,7 +44,7 @@ export const Header = ({
                     <div className="min-w-0">
                         <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                             <h1 className="serif-font text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight truncate">
-                                {brandName} <span className="gold-gradient-text text-base sm:text-xl md:text-2xl font-sans font-bold">Sales Ary</span>
+                                {brandName} <span className="gold-gradient-text text-base sm:text-xl md:text-2xl font-sans font-bold">Sales {salesName}</span>
                             </h1>
                             <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider bg-[#c5a059]/15 text-[#c5a059] border border-[#c5a059]/30 shrink-0">
                                 {activeBrand?.id === 'brand_nacira' ? 'Flagship' : 'Multi-Brand'}

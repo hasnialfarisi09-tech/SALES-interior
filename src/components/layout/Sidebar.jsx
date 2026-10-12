@@ -19,7 +19,8 @@ export const Sidebar = ({
     const sidebarRef = useRef(null);
     const closeBtnRef = useRef(null);
 
-    const brandName = activeBrand?.brandName || 'NACIRA STUDIO';
+    const brandName = activeBrand?.brandName || 'Dekor Interior';
+    const salesName = activeBrand?.salesName || 'Hasni';
 
     const closeSidebar = useCallback(() => {
         setIsSidebarOpen(false);
@@ -104,10 +105,10 @@ export const Sidebar = ({
                     >
                         <div className="flex items-center gap-2.5 overflow-hidden">
                             <div className="w-8 h-8 rounded-xl bg-[#c5a059]/20 text-[#c5a059] flex items-center justify-center font-bold text-xs border border-[#c5a059]/30 flex-shrink-0">
-                                {currentUser?.fullName ? currentUser.fullName.charAt(0).toUpperCase() : 'U'}
+                                {currentUser?.fullName ? currentUser.fullName.charAt(0).toUpperCase() : 'H'}
                             </div>
                             <div className="overflow-hidden">
-                                <div className="text-xs font-bold text-white truncate">{currentUser?.fullName || 'Ary'}</div>
+                                <div className="text-xs font-bold text-white truncate">{currentUser?.fullName || 'Hasni (Super Administrator)'}</div>
                                 <div className="text-[10px] text-zinc-400 truncate">{currentUser?.role === 'SUPER_ADMIN' ? '👑 Super Admin' : 'Staf Marketing'}</div>
                             </div>
                         </div>
@@ -125,7 +126,7 @@ export const Sidebar = ({
                     >
                         <div className="flex items-center gap-3">
                             <Icons.MessageSquare />
-                            <span>Sales Ary</span>
+                            <span>Sales {salesName}</span>
                         </div>
                         <span className="text-[9px] px-1.5 py-0.5 rounded bg-black/20 font-mono font-bold">3 OPSI</span>
                     </button>

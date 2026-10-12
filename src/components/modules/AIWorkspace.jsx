@@ -91,7 +91,8 @@ export const AIWorkspace = ({
     }, [isLoading, aiResponse]);
 
     const brandName = activeBrand?.brandName || 'Dekor Interior';
-    const adminName = activeBrand?.adminName || 'Admin Marketing';
+    const salesName = activeBrand?.salesName || 'Hasni';
+    const adminName = activeBrand?.adminName || salesName;
     const serviceArea = activeBrand?.serviceArea || 'Bandung & Jabodetabek';
 
     // Sinkronkan memori klien jika lead dipilih dari dropdown
@@ -839,7 +840,7 @@ export const AIWorkspace = ({
                                     <Icons.Brain />
                                 </div>
                             </div>
-                            <h3 className="serif-font text-base sm:text-lg font-bold text-white text-center">{brandName} Sales Ary Sedang Bekerja...</h3>
+                            <h3 className="serif-font text-base sm:text-lg font-bold text-white text-center">{brandName} Sales {salesName} Sedang Bekerja...</h3>
                             <p className="text-xs sm:text-sm mt-2 text-center max-w-sm text-zinc-400">
                                 Mencocokkan knowledge base 3-layer, mengaudit integritas harga 2026, dan merumuskan rekomendasi balasan WhatsApp terbaik.
                             </p>

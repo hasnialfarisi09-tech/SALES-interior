@@ -2,15 +2,15 @@
 import { INITIAL_BRANDS, INITIAL_USERS } from '../constants.js';
 import { StorageService } from './storage.js';
 
-const AUTH_STORAGE_KEY = 'multibrand_auth_session_v3';
-const BRANDS_STORAGE_KEY = 'multibrand_registered_brands_v3';
-const USERS_STORAGE_KEY = 'multibrand_registered_users_v3';
+const AUTH_STORAGE_KEY = 'multibrand_auth_session_v4';
+const BRANDS_STORAGE_KEY = 'multibrand_registered_brands_v4';
+const USERS_STORAGE_KEY = 'multibrand_registered_users_v4';
 
 export const AuthService = {
     // Inisialisasi daftar brand di storage (jika belum ada atau perlu disinkronkan)
     getBrands: () => {
         const stored = StorageService.getItem(BRANDS_STORAGE_KEY, null);
-        if (stored && Array.isArray(stored) && stored.length > 0 && stored.some(b => b.id === 'brand_dekor')) {
+        if (stored && Array.isArray(stored) && stored.length > 0 && stored.some(b => b.salesName === 'Diki')) {
             return stored;
         }
         StorageService.setItem(BRANDS_STORAGE_KEY, INITIAL_BRANDS);
@@ -29,7 +29,7 @@ export const AuthService = {
     // Inisialisasi daftar user di storage
     getUsers: () => {
         const stored = StorageService.getItem(USERS_STORAGE_KEY, null);
-        if (stored && Array.isArray(stored) && stored.length > 0 && stored.some(u => u.username === 'dekor')) {
+        if (stored && Array.isArray(stored) && stored.length > 0 && stored.some(u => u.fullName && u.fullName.includes('Hasni'))) {
             return stored;
         }
         StorageService.setItem(USERS_STORAGE_KEY, INITIAL_USERS);
@@ -48,13 +48,20 @@ export const AuthService = {
             const brandExists = brands.some(b => b.id === (saved.activeBrandId || saved.user.brandId));
             if (brandExists) {
                 const activeBrand = AuthService.getBrandById(saved.activeBrandId || saved.user.brandId);
+                const users = AuthService.getUsers();
+                const matchedUser = users.find(u => u.username === saved.user.username);
                 return {
                     ...saved,
+                    user: matchedUser ? {
+                        ...saved.user,
+                        fullName: matchedUser.fullName,
+                        email: matchedUser.email
+                    } : saved.user,
                     activeBrand
                 };
             }
         }
-        // Default session awal: Super Admin (Ary) pada brand Dekor Interior
+        // Default session awal: Super Admin (Hasni) pada brand Dekor Interior
         const defaultUser = INITIAL_USERS[0];
         const defaultBrand = INITIAL_BRANDS[0];
         const defaultSession = {

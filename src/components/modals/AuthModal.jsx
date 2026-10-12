@@ -18,13 +18,13 @@ export const AuthModal = ({
     if (!isOpen) return null;
 
     const quickAccounts = [
-        { username: 'admin', label: '👑 Super Admin (Ary)', role: 'SUPER_ADMIN', desc: 'Akses seluruh brand & switcher' },
-        { username: 'dekor', label: '🏡 Dekor Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Dekor' },
-        { username: 'argo', label: '🌿 Argo Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Argo' },
-        { username: 'median', label: '📐 Median Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Median' },
-        { username: 'porto', label: '🔨 Porto Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Workshop Porto' },
-        { username: 'nacira', label: '✨ Nacira Studio', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Nacira' },
-        { username: 'kitchenset', label: '🍳 Kitchenset Solution Bandung', role: 'MARKETING_ADMIN', desc: 'Akun Admin Kitchenset Solution' }
+        { username: 'admin', label: '👑 Super Admin (Hasni)', role: 'SUPER_ADMIN', desc: 'Akses seluruh brand & switcher' },
+        { username: 'dekor', label: '🏡 Diki — Dekor Interior', role: 'MARKETING_ADMIN', desc: 'Akun Sales Diki (Dekor Interior)' },
+        { username: 'argo', label: '🌿 Diki — Argo Interior', role: 'MARKETING_ADMIN', desc: 'Akun Sales Diki (Argo Interior)' },
+        { username: 'median', label: '📐 Hasni — Median Interior', role: 'MARKETING_ADMIN', desc: 'Akun Sales Hasni (Median Interior)' },
+        { username: 'porto', label: '🔨 Hasni — Porto Interior', role: 'MARKETING_ADMIN', desc: 'Akun Sales Hasni (Porto Interior)' },
+        { username: 'nacira', label: '✨ Hasni — Nacira Studio', role: 'MARKETING_ADMIN', desc: 'Akun Sales Hasni (Nacira Studio)' },
+        { username: 'kitchenset', label: '🍳 Hasni — Kitchenset Solution', role: 'MARKETING_ADMIN', desc: 'Akun Sales Hasni (Kitchenset Solution)' }
     ];
 
     const handleQuickLogin = (uname) => {

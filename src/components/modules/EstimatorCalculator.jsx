@@ -21,7 +21,8 @@ export const EstimatorCalculator = ({
     onApplyToAI, 
     showToast 
 }) => {
-    const brandName = activeBrand?.brandName || 'PUTRA INTERIOR';
+    const brandName = activeBrand?.brandName || 'Dekor Interior';
+    const salesName = activeBrand?.salesName || 'Hasni';
     const [isExportingPDF, setIsExportingPDF] = useState(false);
 
     // Form States
@@ -210,7 +211,7 @@ export const EstimatorCalculator = ({
                 projectType: `${category.replace(/_/g, ' ')} (${material} ${style})`,
                 notes: `Estimasi RAB: Rp ${estimate.grandTotal.toLocaleString('id-ID')} (${estimate.regionLabel})`
             });
-            showToast?.("Hasil estimasi berhasil dimasukkan ke Sales Ary Workspace!");
+            showToast?.(`Hasil estimasi berhasil dimasukkan ke Sales ${salesName} Workspace!`);
         }
     };
 
@@ -1242,7 +1243,7 @@ export const EstimatorCalculator = ({
                                         className="w-full py-2.5 px-4 min-h-[46px] rounded-xl text-xs font-bold transition-all bg-[#202028] hover:bg-[#2e2e38] text-zinc-200 border border-[#2e2e38] flex items-center justify-center gap-2 touch-manipulation active:scale-95"
                                     >
                                         <Icons.Brain />
-                                        <span>Gunakan untuk Balasan Sales Ary</span>
+                                        <span>Gunakan untuk Balasan Sales {salesName}</span>
                                     </button>
                                 )}
                             </div>

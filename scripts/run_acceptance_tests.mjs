@@ -687,15 +687,15 @@ assert(appSrc.includes("activeTab === 'estimator'"), 'app.jsx routes activeTab =
 assert(commandPaletteSrc.includes("'estimator'"), 'CommandPalette includes estimator action');
 
 // ----------------------------------------------------
-// TEST 14: Sales Ary Branding & AI Workspace Calculator Cleanup
+// TEST 14: Dynamic Sales Branding & AI Workspace Calculator Cleanup
 // ----------------------------------------------------
-console.log('\n🧪 TEST 14: Sales Ary Branding & AI Workspace Calculator Cleanup');
+console.log('\n🧪 TEST 14: Dynamic Sales Branding & AI Workspace Calculator Cleanup');
 const headerSrc = fs.readFileSync('src/components/layout/Header.jsx', 'utf-8');
 const workspaceSrc = fs.readFileSync('src/components/modules/AIWorkspace.jsx', 'utf-8');
 
-assert(sidebarSrc.includes('<span>Sales Ary</span>'), 'Sidebar displays Sales Ary navigation label');
-assert(headerSrc.includes('Sales Ary'), 'Header displays Sales Ary branding');
-assert(commandPaletteSrc.includes("title: 'Sales Ary'"), 'CommandPalette displays Sales Ary action');
+assert(sidebarSrc.includes('<span>Sales {salesName}</span>'), 'Sidebar displays dynamic Sales navigation label');
+assert(headerSrc.includes('Sales {salesName}'), 'Header displays dynamic Sales branding');
+assert(commandPaletteSrc.includes("title: `Sales ${salesName}`"), 'CommandPalette displays dynamic Sales action');
 assert(!workspaceSrc.includes('<span>Kalkulator RAB</span>'), 'Calculator button removed from AIWorkspace toolbar');
 assert(!workspaceSrc.includes('showCalculatorModal'), 'Calculator modal removed from AIWorkspace');
 

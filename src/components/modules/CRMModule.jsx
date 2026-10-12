@@ -22,7 +22,8 @@ export const CRMModule = ({
     currentUser,
     onConsultLeadInAI
 }) => {
-    const currentBrandId = activeBrand?.id || 'brand_nacira';
+    const currentBrandId = activeBrand?.id || 'brand_dekor';
+    const salesName = activeBrand?.salesName || 'Hasni';
     const isSuperAdmin = currentUser?.role === 'SUPER_ADMIN';
 
     const [showAllBrands, setShowAllBrands] = useState(false);
@@ -574,7 +575,7 @@ export const CRMModule = ({
                                             onClick={() => onConsultLeadInAI(lead)}
                                             className="flex-1 py-2.5 px-3 rounded-xl bg-[#202028] hover:bg-[#c5a059] hover:text-[#0d0d0d] text-[#c5a059] font-bold text-xs border border-[#33333d] transition-all flex items-center justify-center gap-1.5 min-h-[44px] touch-manipulation active:scale-95"
                                         >
-                                            <Icons.Brain /> <span>Sales Ary</span>
+                                            <Icons.Brain /> <span>Sales {salesName}</span>
                                         </button>
                                     )}
                                     <button
