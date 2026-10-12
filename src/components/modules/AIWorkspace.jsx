@@ -90,7 +90,7 @@ export const AIWorkspace = ({
         }
     }, [isLoading, aiResponse]);
 
-    const brandName = activeBrand?.brandName || 'HOMEPUTRA INTERIOR';
+    const brandName = activeBrand?.brandName || 'Dekor Interior';
     const adminName = activeBrand?.adminName || 'Admin Marketing';
     const serviceArea = activeBrand?.serviceArea || 'Bandung & Jabodetabek';
 

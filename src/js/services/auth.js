@@ -2,15 +2,15 @@
 import { INITIAL_BRANDS, INITIAL_USERS } from '../constants.js';
 import { StorageService } from './storage.js';
 
-const AUTH_STORAGE_KEY = 'multibrand_auth_session';
-const BRANDS_STORAGE_KEY = 'multibrand_registered_brands';
-const USERS_STORAGE_KEY = 'multibrand_registered_users';
+const AUTH_STORAGE_KEY = 'multibrand_auth_session_v3';
+const BRANDS_STORAGE_KEY = 'multibrand_registered_brands_v3';
+const USERS_STORAGE_KEY = 'multibrand_registered_users_v3';
 
 export const AuthService = {
-    // Inisialisasi daftar brand di storage (jika belum ada)
+    // Inisialisasi daftar brand di storage (jika belum ada atau perlu disinkronkan)
     getBrands: () => {
         const stored = StorageService.getItem(BRANDS_STORAGE_KEY, null);
-        if (stored && Array.isArray(stored) && stored.length > 0) {
+        if (stored && Array.isArray(stored) && stored.length > 0 && stored.some(b => b.id === 'brand_dekor')) {
             return stored;
         }
         StorageService.setItem(BRANDS_STORAGE_KEY, INITIAL_BRANDS);
@@ -23,13 +23,13 @@ export const AuthService = {
 
     getBrandById: (brandId) => {
         const brands = AuthService.getBrands();
-        return brands.find(b => b.id === brandId) || brands.find(b => b.id === 'brand_nacira') || brands[0];
+        return brands.find(b => b.id === brandId) || brands.find(b => b.id === 'brand_dekor') || brands.find(b => b.id === 'brand_nacira') || brands[0];
     },
 
     // Inisialisasi daftar user di storage
     getUsers: () => {
         const stored = StorageService.getItem(USERS_STORAGE_KEY, null);
-        if (stored && Array.isArray(stored) && stored.length > 0) {
+        if (stored && Array.isArray(stored) && stored.length > 0 && stored.some(u => u.username === 'dekor')) {
             return stored;
         }
         StorageService.setItem(USERS_STORAGE_KEY, INITIAL_USERS);
@@ -44,14 +44,17 @@ export const AuthService = {
     getCurrentSession: () => {
         const saved = StorageService.getItem(AUTH_STORAGE_KEY, null);
         if (saved && saved.user) {
-            // Validasi brand yang aktif
-            const activeBrand = AuthService.getBrandById(saved.activeBrandId || saved.user.brandId);
-            return {
-                ...saved,
-                activeBrand
-            };
+            const brands = AuthService.getBrands();
+            const brandExists = brands.some(b => b.id === (saved.activeBrandId || saved.user.brandId));
+            if (brandExists) {
+                const activeBrand = AuthService.getBrandById(saved.activeBrandId || saved.user.brandId);
+                return {
+                    ...saved,
+                    activeBrand
+                };
+            }
         }
-        // Default session awal: Super Admin (Ary) pada brand Nacira Studio
+        // Default session awal: Super Admin (Ary) pada brand Dekor Interior
         const defaultUser = INITIAL_USERS[0];
         const defaultBrand = INITIAL_BRANDS[0];
         const defaultSession = {

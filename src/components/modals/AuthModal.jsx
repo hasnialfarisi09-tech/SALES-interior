@@ -19,10 +19,12 @@ export const AuthModal = ({
 
     const quickAccounts = [
         { username: 'admin', label: '👑 Super Admin (Ary)', role: 'SUPER_ADMIN', desc: 'Akses seluruh brand & switcher' },
-        { username: 'homeputra', label: '🏡 Homeputra Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Homeputra' },
-        { username: 'heya', label: '🌿 Heya Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Heya' },
-        { username: 'putra', label: '🔨 Putra Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Workshop Putra' },
-        { username: 'kurnia', label: '💎 Kurnia Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Eksklusif Kurnia' }
+        { username: 'dekor', label: '🏡 Dekor Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Dekor' },
+        { username: 'argo', label: '🌿 Argo Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Argo' },
+        { username: 'median', label: '📐 Median Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Median' },
+        { username: 'porto', label: '🔨 Porto Interior', role: 'MARKETING_ADMIN', desc: 'Akun Admin Workshop Porto' },
+        { username: 'nacira', label: '✨ Nacira Studio', role: 'MARKETING_ADMIN', desc: 'Akun Admin Marketing Nacira' },
+        { username: 'kitchenset', label: '🍳 Kitchenset Solution Bandung', role: 'MARKETING_ADMIN', desc: 'Akun Admin Kitchenset Solution' }
     ];
 
     const handleQuickLogin = (uname) => {
@@ -126,7 +128,7 @@ export const AuthModal = ({
                     <FormField label="Username atau Email">
                         <input 
                             type="text" 
-                            placeholder="admin / homeputra / heya" 
+                            placeholder="admin / dekor / argo / nacira" 
                             value={usernameInput} 
                             onChange={(e) => setUsernameInput(e.target.value)} 
                             className="w-full bg-[#1b1b22] border border-[#26262d] rounded-xl px-4 py-2.5 text-base sm:text-xs text-white focus:outline-none focus:ring-2 focus:ring-[#c5a059]/30 min-h-[44px]"
